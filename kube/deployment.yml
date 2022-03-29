@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: portainer-demo-deployment
+  labels:
+    app: portainer-demo-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: portainer-demo-deployment
+  template:
+    metadata:
+      labels:
+        app: portainer-demo-deployment
+    spec:
+      containers:
+        - name: nginx
+          image: nginx:latest
+          ports:
+          - containerPort: 80
+          imagePullPolicy: Always
