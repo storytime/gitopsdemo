@@ -7,6 +7,6 @@ spec:
   selector:
     app: portainer-demo-deployment
   ports:
-  - nodePort: 30080
+  - nodePort: 30070
     port: 80
     targetPort: 80
