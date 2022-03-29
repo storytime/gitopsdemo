@@ -1,18 +1,18 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: portainer-demo
+  name: single-manifest-demo
   labels:
-    app: portainer-demo
+    app: single-manifest-demo
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: portainer-demo
+      app: single-manifest-demo
   template:
     metadata:
       labels:
-        app: portainer-demo
+        app: single-manifest-demo
     spec:
       containers:
         - name: nginx
@@ -20,3 +20,16 @@ spec:
           ports:
           - containerPort: 80
           imagePullPolicy: Always
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: single-manifest-demo-service
+spec:
+  type: NodePort
+  selector:
+    app: single-manifest-demo
+  ports:
+  - nodePort: 30080
+    port: 80
+    targetPort: 80
