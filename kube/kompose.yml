@@ -8,7 +8,6 @@ services:
      restart: always
      labels:
       kompose.volume.type: persistentVolumeClaim
-      kompose.volume.storage-class-name: do-block-storage
       kompose.volume.size: 10Gi
      volumes:
        - db:/var/lib/mysql
