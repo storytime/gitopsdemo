@@ -6,6 +6,8 @@ services:
      ports:
        - 3306:3306
      restart: always
+     volumes:
+       - db:/var/lib/mysql
      environment:
        MYSQL_ROOT_PASSWORD: 12345678
        MYSQL_DATABASE: wordpress
@@ -23,3 +25,6 @@ services:
        WORDPRESS_DB_PASSWORD: wordpress
      labels:
        kompose.service.type: LoadBalancer
+
+volumes:
+  db:
