@@ -10,7 +10,7 @@ services:
       kompose.volume.type: persistentVolumeClaim
       kompose.volume.size: 10Gi
      volumes:
-       - db:/var/lib/mysql
+       - db:/var/lib/mysql/
      environment:
        MYSQL_ROOT_PASSWORD: 12345678
        MYSQL_DATABASE: wordpress
