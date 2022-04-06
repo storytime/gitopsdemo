@@ -20,8 +20,8 @@ spec:
         ports:
         - containerPort: 80
         imagePullPolicy: Always
-        # envFrom:
-        # - configMapRef:
-        #     name: portainer-config
-        # - secretRef:
-        #     name: test-secret
+        envFrom:
+        - configMapRef:
+            name: portainer-config
+        - secretRef:
+            name: test-secret
