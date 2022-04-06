@@ -24,4 +24,4 @@ spec:
         - configMapRef:
             name: portainer-config
         - secretRef:
-            name: test-secret
+            name: portainer-secret
