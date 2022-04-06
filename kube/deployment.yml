@@ -15,8 +15,13 @@ spec:
         app: portainer-demo-deployment
     spec:
       containers:
-        - name: nginx
-          image: nginx:latest
-          ports:
-          - containerPort: 80
-          imagePullPolicy: Always
+      - name: nginx
+        image: nginx:latest
+        ports:
+        - containerPort: 80
+        imagePullPolicy: Always
+        # envFrom:
+        # - configMapRef:
+        #     name: portainer-config
+        # - secretRef:
+        #     name: test-secret
