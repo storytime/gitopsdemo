@@ -20,5 +20,5 @@ spec:
               number: 80
   tls:
   - hosts:
-    - 13.210.22.201.nip.io
+    - 54.66.243.166.nip.io
     secretName: portainer-tls
