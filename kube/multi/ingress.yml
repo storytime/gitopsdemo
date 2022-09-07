@@ -8,7 +8,7 @@ metadata:
 spec:
   ingressClassName: nginx
   rules:
-  - host: 54.66.243.166.nip.io
+  - host: 13.211.103.226.nip.io
     http:
       paths:
       - path: /
@@ -20,5 +20,5 @@ spec:
               number: 80
   tls:
   - hosts:
-    - 54.66.243.166.nip.io
+    - 13.211.103.226.nip.io
     secretName: portainer-tls
