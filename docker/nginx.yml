@@ -7,3 +7,7 @@ services:
     deploy:
       mode: replicated
       replicas: 2
+    volumes:
+      - type: bind
+        source: /
+        target: /data
