@@ -6,8 +6,8 @@ services:
       - 80:80
     deploy:
       mode: replicated
-      replicas: 2
+      replicas: 1
     volumes:
       - type: bind
-        source: ../
+        source: ./
         target: /data
