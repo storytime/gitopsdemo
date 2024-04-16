@@ -60,10 +60,9 @@ metadata:
   namespace: node-red
 spec:
   selector:
-    app: node-red
-  type: LoadBalancer
+    app: node-red  
   ports:
-    - name: node-red-ui
+    - protocol: TCP
       port: 1880
-      protocol: TCP
       targetPort: 1880
+  type: NodePort
