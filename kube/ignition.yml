@@ -36,7 +36,7 @@ spec:
           fi
         volumeMounts:
         - mountPath: /data
-          name: ignition-pv-enterprise-volume
+          name: ignition-data
       containers:
       - name: ignition
         image: inductiveautomation/ignition:8.1.8
