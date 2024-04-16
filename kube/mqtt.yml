@@ -27,13 +27,13 @@ spec:
         - name: config-volume
           mountPath: /mosquitto/config
           readOnly: true
-  volumes:
-    - name: config-volume
-      configMap:
-        name: mosquitto-config
-        items:
-          - key: mosquitto.conf
-            path: mosquitto.conf
+      volumes:
+        - name: config-volume
+          configMap:
+            name: mosquitto-config
+            items:
+              - key: mosquitto.conf
+                path: mosquitto.conf
 ---
 apiVersion: v1
 kind: ConfigMap
