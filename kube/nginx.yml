@@ -20,15 +20,15 @@ spec:
           ports:
           - containerPort: 80
           imagePullPolicy: Always
------
+---
 apiVersion: v1
 kind: Service
 metadata:
-  name: portainer-demo-service
+  name: single-manifest-demo
 spec:
   type: ClusterIP
   selector:
-    app: portainer-demo-deployment
+    app: single-manifest-demo
   ports:
   - port: 80
     targetPort: 80
