@@ -24,7 +24,8 @@ spec:
         ports:
         - containerPort: 1883
         volumeMounts:
-        - mountPath: /mosquitto/config/mosquitto.conf
+        - mountPath: /mosquitto/config/
+          subPath: mosquitto.conf
           name: config
       volumes:
       - name: config
