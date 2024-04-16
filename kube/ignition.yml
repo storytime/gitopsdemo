@@ -1,0 +1,83 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: ignition
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ignition
+  namespace: ignition
+  labels:
+    app: ignition
+spec:
+  selector:
+    matchLabels:
+      app: ignition
+  template:
+    metadata:
+      labels:
+        app: ignition
+    spec:
+      containers:
+      - name: ignition
+        image: inductiveautomation/ignition:8.1.8
+        env:
+        - name: ACCEPT_IGNITION_EULA
+          value: "Y"
+        - name: GATEWAY_ADMIN_USERNAME
+          value: "admin"
+        - name: GATEWAY_ADMIN_PASSWORD
+          value: "portainerdemo"
+        - name: TZ
+          value: “America/Chicago”
+        - name: IGNITION_EDITION
+          value: standard
+        ports:
+        - name: ignition-http
+          containerPort: 8088
+        - name: ignition-https
+          containerPort: 8043
+        args:
+        - -m
+        - "4096"
+        - -n
+        - "Ignition-GW"
+        volumeMounts:
+        - name: ignition-data
+          mountPath: /usr/local/bin/ignition/data
+      volumes:
+      - name: ignition-data
+        persistentVolumeClaim:
+          claimName: ignition-claim
+---
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: ignition-claim
+  namespace: ignition
+spec:
+  accessModes:
+  - ReadWriteOnce
+  resources:
+    requests:
+      storage: 10Gi
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: ignition
+  namespace: ignition
+spec:
+  selector:
+    app: ignition 
+  ports:
+  - name: ignition-http
+    protocol: TCP
+    port: 8088
+    targetPort: 8088
+  - name: ignition-https
+    protocol: TCP
+    port: 8043
+    targetPort: 8043
+  type: NodePort
