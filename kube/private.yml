@@ -1,0 +1,34 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: single-manifest-demo
+  labels:
+    app: single-manifest-demo
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: single-manifest-demo
+  template:
+    metadata:
+      labels:
+        app: single-manifest-demo
+    spec:
+      containers:
+        - name: nginx
+          image: neilcresswell/portainertesting:nginx
+          ports:
+          - containerPort: 80
+          imagePullPolicy: Always
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: single-manifest-demo
+spec:
+  type: ClusterIP
+  selector:
+    app: single-manifest-demo
+  ports:
+  - port: 80
+    targetPort: 80
