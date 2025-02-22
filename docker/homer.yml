@@ -1,0 +1,14 @@
+services:
+  homer:
+    image: b4bz/homer:latest
+    container_name: homer
+    environment:
+      - INIT_ASSETS=${INIT_ASSETS}
+    volumes:
+      - ${APP_DATA_PATH}/homer-data:/www/assets
+    ports:
+      - ${HOMER_UI_PORT}:8080
+    user: ${PUID}:1000
+    restart: ${RESTART_POLICY}
+    networks:
+      - ${NETWORK}
