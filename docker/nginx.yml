@@ -2,7 +2,8 @@ version: '3.2'
 services:
   nginx:
     image: nginx:latest
-    env_file: .env
+    env_file: 
+      - stack.env
     ports:
       - ${PORT}:80
     deploy:
