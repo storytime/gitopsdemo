@@ -6,6 +6,7 @@ services:
       - ${PORT}:80
     env_file:
       - stack.env
+      - .env
     deploy:
       mode: replicated
       replicas: 1
