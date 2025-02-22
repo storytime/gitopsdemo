@@ -4,6 +4,8 @@ services:
     image: nginx:latest
     ports:
       - ${PORT}:80
+    env_file:
+      - stack.env
     deploy:
       mode: replicated
       replicas: 1
