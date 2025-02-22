@@ -6,3 +6,5 @@ services:
     env_file:
       - stack.env
       - .env
+    environment:
+      - PORT=${PORT}
